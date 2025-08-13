@@ -1,0 +1,6 @@
+
+export function encode(arr) {
+  let s = '';
+  for (const b of arr) s += String.fromCharCode(b);
+  return btoa(s).replace(/=+$/,'');
+}
