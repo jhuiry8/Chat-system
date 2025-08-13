@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CF Chat + Voice Starter</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; display: grid; grid-template-columns: 240px 1fr; height: 100vh; }
+    aside { border-right: 1px solid #ddd; padding: 12px; overflow: auto; }
+    main { display: grid; grid-template-rows: auto 1fr auto; height: 100vh; }
+    header, footer { padding: 8px 12px; border-bottom: 1px solid #ddd; }
+    #messages { padding: 12px; overflow: auto; }
+    .msg { margin: 6px 0; }
+    .system { color: #666; font-style: italic; }
+    .row { display: flex; gap: 8px; }
+    input, button, select { padding: 6px; }
+    #voice { padding: 8px 12px; border-top: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <aside>
+    <h3>Auth</h3>
+    <div class="row">
+      <input id="email" placeholder="email" />
+    </div>
+    <div class="row">
+      <input id="password" type="password" placeholder="password" />
+    </div>
+    <div class="row">
+      <button id="register">Register</button>
+      <button id="login">Login</button>
+    </div>
+    <hr/>
+    <h3>Guilds</h3>
+    <div class="row">
+      <input id="guildName" placeholder="New guild name" />
+      <button id="createGuild">Create</button>
+    </div>
+    <ul id="guilds"></ul>
+    <hr/>
+    <h3>Channels</h3>
+    <div class="row">
+      <input id="channelName" placeholder="New channel" />
+      <select id="channelKind">
+        <option value="text">text</option>
+        <option value="voice">voice</option>
+      </select>
+      <button id="createChannel">Create</button>
+    </div>
+    <ul id="channels"></ul>
+    <hr/>
+    <h3>Invites</h3>
+    <div class="row">
+      <button id="makeInvite">Create Invite</button>
+    </div>
+    <div class="row">
+      <input id="inviteCode" placeholder="invite code" />
+      <button id="joinInvite">Join</button>
+    </div>
+  </aside>
+  <main>
+    <header>
+      <div class="row">
+        <div>Current Channel: <span id="currentChannel">None</span></div>
+        <input type="file" id="fileInput" />
+        <button id="sendFile">Send File</button>
+      </div>
+    </header>
+    <div id="messages"></div>
+    <footer>
+      <div class="row">
+        <input id="content" placeholder="Type a message" style="flex:1" />
+        <button id="send">Send</button>
+      </div>
+    </footer>
+    <div id="voice">
+      <div class="row">
+        <button id="joinVoice">Join Voice</button>
+        <button id="leaveVoice">Leave Voice</button>
+        <select id="micSelect"></select>
+      </div>
+      <audio id="remoteAudio" autoplay playsinline></audio>
+    </div>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
