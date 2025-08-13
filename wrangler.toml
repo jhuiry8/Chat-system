@@ -1,0 +1,45 @@
+
+name = "cf-chat-voice-starter"
+main = "src/worker.ts"
+compatibility_date = "2024-11-15"
+compatibility_flags = ["nodejs_compat"]
+
+# --- D1 ---
+[[d1_databases]]
+binding = "DB"
+database_name = "chat_d1"
+database_id = "REPLACE_WITH_D1_ID"
+
+# --- R2 ---
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "chat-uploads"
+
+# --- Durable Objects ---
+[[durable_objects.bindings]]
+name = "ChannelRoom"
+class_name = "ChannelRoom"
+
+[[durable_objects.bindings]]
+name = "VoiceSignal"
+class_name = "VoiceSignal"
+
+# KV for sessions (optional, JWT used by default)
+# [[kv_namespaces]]
+# binding = "SESSIONS"
+# id = "REPLACE_WITH_KV_ID"
+
+[vars]
+# public vars
+CLIENT_ORIGIN = "http://localhost:8787"
+R2_PUBLIC_BASE = "https://pub-REPLACE.r2.dev/chat-uploads"
+
+[observability]
+enabled = true
+
+
+# --- Cloudflare Realtime (HTTPS Connection API) ---
+# Example endpoint (replace with the one from docs for your account/app):
+# REALTIME_CONNECT_URL = "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/realtime/apps/APP_ID/sessions"
+[vars]
+REALTIME_CONNECT_URL = ""
